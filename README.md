@@ -12,4 +12,5 @@ Deploy: [ссылка](https://daniilboyarinkov.github.io/kozhindev-test-exchang
 
 Картиночка: 
 
-![image](https://user-images.githubusercontent.com/89917619/215674250-556e16f5-9a19-46db-a157-7217bdb350d3.png)
+![image](https://user-images.githubusercontent.com/89917619/215783215-31b61e5a-f059-4850-87ad-efa686700bfb.png)
+
