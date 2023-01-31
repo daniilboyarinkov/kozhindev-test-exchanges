@@ -1,17 +1,18 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from '@reduxjs/toolkit';
+
+import { currenciesMeta } from './currencies';
+import { themeSlice } from './theme/slice';
+import { currenciesApi } from './currencies/api';
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+    reducer: {
+        currencies: currenciesMeta.reducer,
+        theme: themeSlice.reducer,
+        [currenciesApi.reducerPath]: currenciesApi.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(currenciesApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;

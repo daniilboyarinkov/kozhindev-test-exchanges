@@ -1,0 +1,15 @@
+.header {
+    @apply navbar sm:py-10 md:px-14;
+
+    &__left-group {
+        @apply flex-1;
+    }
+
+    &__right-group {
+        @apply flex-none;
+    }
+
+    &__logo {
+        @apply btn btn-ghost normal-case text-xl;
+    }
+}

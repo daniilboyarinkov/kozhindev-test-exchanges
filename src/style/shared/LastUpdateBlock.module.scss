@@ -1,0 +1,15 @@
+.last-update-block {
+    @apply card items-center gap-2;
+
+    &__btn {
+        @apply btn;
+    }
+}
+
+.date-text {
+    @apply font-semibold;
+}
+
+.time-text {
+    @apply label-text -mt-2;
+}

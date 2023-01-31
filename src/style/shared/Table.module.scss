@@ -1,0 +1,11 @@
+.wrapper {
+    @apply overflow-x-auto grid place-items-center;
+}
+
+.app-table {
+    @apply table table-compact w-full;
+
+    &__row {
+        @apply whitespace-normal;
+    }
+}
