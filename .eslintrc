@@ -28,7 +28,7 @@
     "plugins": ["@typescript-eslint"],
     "settings": {
         "import/parsers": {
-            "@typescript-eslint/parser": [".tsx", ".ts", "js", "jsx"]
+            "@typescript-eslint/parser": [".tsx", ".ts", "js", "jsx", "riv"]
         },
         "import/resolver": {
             "typescript": {}

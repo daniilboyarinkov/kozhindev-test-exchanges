@@ -19,7 +19,7 @@ export const Header = () => {
     return (
         <header className={s.header}>
             <div className={s['header__left-group']}>
-                <a className={s.header__logo}>Name</a>
+                <a className={s.header__logo}>Coffee Currency</a>
             </div>
             <div className={s['header__right-group']}>
                 <LastUpdateBlock />
