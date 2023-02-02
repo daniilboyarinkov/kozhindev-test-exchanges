@@ -8,6 +8,7 @@ import { router } from './router';
 import './style/index.scss';
 
 // it is guarantied that there is always a root container in index.html
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 

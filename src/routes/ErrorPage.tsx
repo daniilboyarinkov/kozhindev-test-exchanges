@@ -5,7 +5,7 @@ export function ErrorPage() {
     console.log(error);
 
     return (
-        <div className="grid place-content-center m-12">
+        <div className="m-12 grid place-content-center">
             <h1>Oops!</h1>
             <p>Sorry, an unexpected error has occurred.</p>
             <p>

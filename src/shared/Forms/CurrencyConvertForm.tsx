@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 
-import { CODES } from '../../constants';
-import { CurrencyInput } from '../Inputs/CurrencyInput';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { CurrencyConverter } from '../../utils/converters/currency/currencyConverter';
 import { useGetCurrenciesQuery } from '../../app/currencies';
-import { replaceDotByComma } from '../../utils/replaceDotByComma';
+import { CODES } from '../../constants';
 import { regCurrencyInputPattern } from '../../constants/reg';
-import { validateString } from '../../utils/validateString';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import s from '../../style/shared/CurrencyConvertForm.module.scss';
+import { CurrencyConverter } from '../../utils/converters/currency/currencyConverter';
+import { replaceDotByComma } from '../../utils/replaceDotByComma';
+import { validateString } from '../../utils/validateString';
+import { CurrencyInput } from '../Inputs/CurrencyInput';
 
 const { EUR, USD } = CODES;
 
 // TODO:
 // Refactor needed
-// issue: Странная (прямолинейная) реализация двусвязных полей
+// issue: (прямолинейная) реализация двусвязных полей
 export const CurrencyConvertForm = () => {
     const { data: currencies } = useGetCurrenciesQuery('');
     const [firstCurrency, setFirstCurrency] = useLocalStorage(
@@ -57,18 +57,28 @@ export const CurrencyConvertForm = () => {
         );
     };
 
+    const handleFirstSelect = (currency: string) => {
+        setFirstCurrency(currency);
+        handleFirstInput(firstValue);
+    };
+
+    const handleSecondSelect = (currency: string) => {
+        setSecondCurrency(currency);
+        handleSecondInput(firstValue);
+    };
+
     return (
         <div className={s.form}>
             <h1 className={s.title}>Currency Conversion</h1>
             <CurrencyInput
                 activeCode={firstCurrency}
-                setCurrency={setFirstCurrency}
+                setCurrency={handleFirstSelect}
                 value={firstValue}
                 handleInput={handleFirstInput}
             />
             <CurrencyInput
                 activeCode={secondCurrency}
-                setCurrency={setSecondCurrency}
+                setCurrency={handleSecondSelect}
                 value={secondValue}
                 handleInput={handleSecondInput}
             />

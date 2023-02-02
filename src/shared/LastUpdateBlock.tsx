@@ -2,10 +2,9 @@ import React from 'react';
 
 import { useGetCurrenciesQuery } from '../app/currencies';
 import { useAppSelector } from '../app/hooks';
-import { timeConverter } from '../utils/converters/timeConverter';
-import { dateConverter } from '../utils/converters/dateConverter';
-
 import s from '../style/shared/LastUpdateBlock.module.scss';
+import { dateConverter } from '../utils/converters/dateConverter';
+import { timeConverter } from '../utils/converters/timeConverter';
 
 export const LastUpdateBlock = () => {
     const { refetch } = useGetCurrenciesQuery('');

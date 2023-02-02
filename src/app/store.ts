@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { currenciesMeta } from './currencies';
-import { themeSlice } from './theme/slice';
 import { currenciesApi } from './currencies/api';
+import { themeSlice } from './theme/slice';
 
 export const store = configureStore({
     reducer: {

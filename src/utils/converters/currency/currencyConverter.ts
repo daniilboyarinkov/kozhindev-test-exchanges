@@ -1,7 +1,8 @@
-import { replaceCommaByDot, replaceDotByComma } from '../../replaceDotByComma';
-import { round } from '../../round';
 import { ICurrency } from './../../../app/currencies/types';
 import { convertBetweenUnary } from './betweenUnary';
+
+import { replaceCommaByDot, replaceDotByComma } from '../../replaceDotByComma';
+import { round } from '../../round';
 
 export const CurrencyConverter = (
     currencies: ICurrency[],

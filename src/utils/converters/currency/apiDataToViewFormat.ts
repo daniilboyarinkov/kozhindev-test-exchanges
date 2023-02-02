@@ -1,8 +1,10 @@
-import { ICurrency, IResCurrency, IResponse } from '../../../app/currencies';
+import { filterResCurrencyObject } from './../../filters/filterCurrencyObject';
+
+import { convertBetweenUnary } from './betweenUnary';
+
+import { ICurrency, IResCurrency } from '../../../app/currencies';
 import { CODES } from '../../../constants';
 import { round } from '../../round';
-import { filterResCurrencyObject } from './../../filters/filterCurrencyObject';
-import { convertBetweenUnary } from './betweenUnary';
 
 export const convertApiDataToViewFormat = (
     data: Record<string, IResCurrency>,
