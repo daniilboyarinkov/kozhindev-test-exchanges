@@ -1,18 +1,19 @@
-import { delay } from './../../utils/delay';
-import { convertApiDataToViewFormat } from '../../utils/converters/currency/apiDataToViewFormat';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 
+import { delay } from './../../utils/delay';
 import { currenciesActions } from './slice';
 import { ICurrency, IResponse } from './types';
 
+import { axiosBaseQuery } from '../../api/axios';
 import { API_DOMAIN, API_METHODS } from '../../constants';
+import { convertApiDataToViewFormat } from '../../utils/converters/currency/apiDataToViewFormat';
 
 export const currenciesApi = createApi({
     reducerPath: 'currenciesApi',
-    baseQuery: fetchBaseQuery({ baseUrl: API_DOMAIN }),
+    baseQuery: axiosBaseQuery({ baseUrl: API_DOMAIN }),
     endpoints: (build) => ({
         getCurrencies: build.query<ICurrency[], string>({
-            query: () => API_METHODS.GET_CURRENCY,
+            query: () => ({ url: API_METHODS.GET_CURRENCY, method: 'GET' }),
             async onQueryStarted(_, { dispatch }) {
                 dispatch(currenciesActions.setLastUpdate());
             },
@@ -21,7 +22,7 @@ export const currenciesApi = createApi({
                 // ALERT!
                 // принудительная задержка обработки данных
                 await delay(1000);
-                return convertApiDataToViewFormat(response);
+                return convertApiDataToViewFormat(response.Valute);
             },
         }),
     }),

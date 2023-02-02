@@ -1,3 +1,11 @@
+// api return format
+export interface IResponse {
+    Date: string;
+    PreviousDate: string;
+    PreviousURL: string;
+    Timestamp: string;
+    Valute: Record<string, IResCurrency>;
+}
 export interface IResCurrency {
     ID: string;
     NumCode: string;
@@ -8,26 +16,22 @@ export interface IResCurrency {
     Previous: number;
 }
 
-export interface IResponse {
-    Date: string;
-    PreviousDate: string;
-    PreviousURL: string;
-    Timestamp: string;
-    Valute: Record<string, IResCurrency>;
+export interface IResCurrencyFiltered {
+    Name: string;
+    CharCode: string;
 }
 
+// api require format
 export interface ICurrency {
-    ID: string;
     Name: string;
-    NumCode: string;
     CharCode: string;
-    Nominal: number;
     RubValue: string;
     UsdValue: string;
     EurValue: string;
     CnyValue: string;
 }
 
+// initial state of slice
 export interface IInitialState {
     lastUpdate: number;
 }

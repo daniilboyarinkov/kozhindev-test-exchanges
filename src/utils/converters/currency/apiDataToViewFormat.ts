@@ -1,34 +1,33 @@
-import { convertBetweenUnary } from './convertBetweenUnary';
-
-import { ICurrency, IResponse } from '../../../app/currencies';
+import { ICurrency, IResCurrency, IResponse } from '../../../app/currencies';
 import { CODES } from '../../../constants';
 import { round } from '../../round';
+import { filterResCurrencyObject } from './../../filters/filterCurrencyObject';
+import { convertBetweenUnary } from './betweenUnary';
 
-export const convertApiDataToViewFormat = (obj: IResponse): ICurrency[] => {
-    const resultData: ICurrency[] = [];
-    const targetData = obj.Valute;
-
+export const convertApiDataToViewFormat = (
+    data: Record<string, IResCurrency>,
+): ICurrency[] => {
     const { EUR, USD, CNY } = CODES;
     const rawCurrenciesValues = [EUR, USD, CNY].map(
-        (currency) => targetData[currency].Value,
+        (currency) => data[currency].Value,
     );
 
     // добавление недостающих вычисляемых полей в пришедший с api объект
-    Object.keys(targetData).forEach((key) => {
-        const curValue = targetData[key].Value;
+    const resultData: ICurrency[] = Object.keys(data).map((key) => {
+        const curValue = data[key].Value;
 
         const [EurValue, UsdValue, CnyValue] = rawCurrenciesValues.map((val) =>
             round(convertBetweenUnary(curValue, val)),
         );
         const RubValue = round(curValue);
 
-        resultData.push({
-            ...targetData[key],
+        return {
+            ...filterResCurrencyObject(data[key]),
             EurValue,
             UsdValue,
             CnyValue,
             RubValue,
-        });
+        };
     });
 
     return resultData;

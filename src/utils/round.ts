@@ -1,3 +1,4 @@
 import { ROUNDING } from '../constants';
 
-export const round = (num: number, to: number = ROUNDING) => num.toFixed(to);
+export const round = (num: number, fractionDigits: number = ROUNDING) =>
+    num.toFixed(fractionDigits);

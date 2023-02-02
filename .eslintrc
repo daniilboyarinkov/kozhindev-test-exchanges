@@ -1,6 +1,8 @@
 {
-    "extends": ["plugin:import/recommended"],
-    "plugins": ["jsx-a11y"],
+    "extends": [
+        "plugin:import/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
     "rules": {
         "import/order": [
             1,
@@ -23,9 +25,13 @@
         ],
         "import/no-unresolved": [1, { "caseSensitive": false }]
     },
+    "plugins": ["@typescript-eslint"],
     "settings": {
         "import/parsers": {
-            "@typescript-eslint/parser": [".ts", ".tsx", "js", "jsx"]
+            "@typescript-eslint/parser": [".tsx", ".ts", "js", "jsx"]
+        },
+        "import/resolver": {
+            "typescript": {}
         }
     }
 }

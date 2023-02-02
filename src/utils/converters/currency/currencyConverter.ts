@@ -1,7 +1,7 @@
-import { convertBetweenUnary } from './convertBetweenUnary';
-import { ICurrency } from './../../../app/currencies/types';
+import { replaceCommaByDot, replaceDotByComma } from '../../replaceDotByComma';
 import { round } from '../../round';
-import { replaceDotByComma } from '../../replaceDotByComma';
+import { ICurrency } from './../../../app/currencies/types';
+import { convertBetweenUnary } from './betweenUnary';
 
 export const CurrencyConverter = (
     currencies: ICurrency[],
@@ -9,24 +9,27 @@ export const CurrencyConverter = (
     from: string,
     to: string,
     convertTarget: (value: ((prevState: string) => string) | string) => void,
-) => {
-    if (!value) {
-        convertTarget('');
-        return;
-    }
+): void => {
+    if (!value) return convertTarget('');
 
-    const fromValue = _findRubValue(currencies, from);
-    const toValue = _findRubValue(currencies, to);
+    const fromValue = _findDefaultCurrencyValue(currencies, from);
+    const toValue = _findDefaultCurrencyValue(currencies, to);
 
-    convertTarget(
-        replaceDotByComma(
-            round(
-                convertBetweenUnary(fromValue, toValue) *
-                    Number(value.replace(',', '.')),
-            ),
-        ),
-    );
+    const convertedValue =
+        convertBetweenUnary(fromValue, toValue) *
+        Number(replaceCommaByDot(value));
+
+    const result = replaceDotByComma(round(convertedValue));
+
+    convertTarget(result);
 };
 
-const _findRubValue = (currencies: ICurrency[], charCode: string): number =>
-    Number(currencies.find((cur) => cur.CharCode === charCode)?.RubValue) ?? 0;
+const _findDefaultCurrencyValue = (
+    currencies: ICurrency[],
+    charCode: string,
+    defaultCurrency: keyof ICurrency = 'RubValue',
+): number => {
+    const currency = currencies.find((cur) => cur.CharCode === charCode);
+
+    return currency ? Number(currency[defaultCurrency]) : 0;
+};

@@ -1,10 +1,12 @@
-import { ICurrency } from '../../app/currencies';
+import { IResCurrency, IResCurrencyFiltered } from '../../app/currencies';
 
-const unwantedFields = ['ID', 'Previous', 'Nominal', 'Value', 'NumCode'];
+export const filterResCurrencyObject = (
+    obj: IResCurrency,
+): IResCurrencyFiltered => {
+    const result: IResCurrencyFiltered = {
+        Name: obj.Name,
+        CharCode: obj.CharCode,
+    };
 
-export const filterCurrencyObject = (obj: ICurrency) =>
-    Object.entries(obj).reduce(
-        (acc, [key, value]) =>
-            !unwantedFields.includes(key) ? { ...acc, [key]: value } : acc,
-        {},
-    );
+    return result;
+};

@@ -1,9 +1,9 @@
 .wrapper {
-    @apply overflow-x-auto grid place-items-center;
+    @apply grid place-items-center overflow-x-auto;
 }
 
 .app-table {
-    @apply table table-compact w-full;
+    @apply table-compact table w-full;
 
     &__row {
         @apply whitespace-normal;

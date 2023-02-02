@@ -2,19 +2,18 @@ import React from 'react';
 
 import { LastUpdateBlock } from './LastUpdateBlock';
 
-import { setTheme } from '../app/theme/slice';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { ThemeToggleButtonSVG } from '../svg/ThemeToggleButtonSVG';
-
+import { setTheme } from '../app/theme/slice';
 import s from '../style/shared/Header.module.scss';
+import { ThemeToggleButtonSVG } from '../svg/ThemeToggleButtonSVG';
 
 export const Header = () => {
     const dispatch = useAppDispatch();
     const theme = useAppSelector((state) => state.theme);
 
     const handleThemeChange = () => {
-        const next = theme === 'dark' ? 'light' : 'dark';
-        dispatch(setTheme(next));
+        const toggledTheme = theme === 'dark' ? 'light' : 'dark';
+        dispatch(setTheme(toggledTheme));
     };
 
     return (
@@ -24,7 +23,7 @@ export const Header = () => {
             </div>
             <div className={s['header__right-group']}>
                 <LastUpdateBlock />
-                <button className="btn btn-ghost" onClick={handleThemeChange}>
+                <button className="btn-ghost btn" onClick={handleThemeChange}>
                     <ThemeToggleButtonSVG theme={theme} />
                 </button>
             </div>
