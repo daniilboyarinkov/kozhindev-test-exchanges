@@ -9,9 +9,13 @@ import { ErrorPage, IndexPage } from './routes';
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+        <Route
+            path="/kozhindev-test-exchanges/"
+            element={<App />}
+            errorElement={<ErrorPage />}
+        >
             <Route
-                path="/"
+                path="/kozhindev-test-exchanges/"
                 element={<IndexPage />}
                 errorElement={<ErrorPage />}
             />
