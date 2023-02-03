@@ -12,6 +12,7 @@ Deploy: [ссылка](https://daniilboyarinkov.github.io/kozhindev-test-exchang
 
 Тык на картинку: 
 
+
 <a target="_blank" href="https://daniilboyarinkov.github.io/kozhindev-test-exchanges/">
-  <img alt="preview" src="https://user-images.githubusercontent.com/89917619/216559929-8a83c36b-7dbc-4f73-b4ee-664022acac13.png"/>
+  <img alt="preview" src="https://user-images.githubusercontent.com/89917619/216560389-93b459db-ca23-4d2c-90ed-15c39a164f01.png"/>
 </a>
